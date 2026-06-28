@@ -4,6 +4,7 @@
   "description": "Strona Masaż Kobido Paulina Paszkiewicz – Lublin",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.11.1",
   "scripts": {
     "dev": "vite",
     "local": "vite",
@@ -16,5 +17,8 @@
     "tailwindcss": "^4.1.11",
     "vite": "^6.3.5",
     "wrangler": "^4.40.0"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": ["esbuild", "sharp", "workerd"]
   }
 }

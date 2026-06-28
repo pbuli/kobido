@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Design tokens — edit these to restyle the whole site.
+   Used via Tailwind utilities, e.g. bg-cream, text-ink, bg-forest, font-sans.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans: "Quicksand", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --color-cream: #e8e4d6;       /* page background (sand/beige) */
+  --color-cream-deep: #ddd8c6;  /* slightly darker beige for panels */
+  --color-card: #f4f1e8;        /* light card surface */
+
+  --color-ink: #2e2e36;         /* body text */
+  --color-ink-soft: #50505c;    /* muted text */
+  --color-line: #3a3a40;        /* divider / rule */
+
+  --color-forest: #4f7c2f;      /* primary green (buttons / accents) */
+  --color-forest-dark: #3f6626; /* hover */
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem; /* offset for the sticky header */
+  }
+
+  body {
+    background-color: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4 {
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: var(--color-ink);
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Reusable component classes
+--------------------------------------------------------------------------- */
+@layer components {
+  /* Centered content column */
+  .wrap {
+    @apply mx-auto w-full max-w-5xl px-6 sm:px-8;
+  }
+
+  /* Thin horizontal section separator (like the original) */
+  .rule {
+    @apply mx-auto max-w-5xl border-0 border-t;
+    border-color: var(--color-line);
+  }
+
+  /* Big light-weight section heading */
+  .h-section {
+    @apply text-3xl sm:text-4xl;
+    font-weight: 300;
+  }
+
+  /* Green call-to-action button */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5
+           text-sm sm:text-base font-medium text-white transition-colors;
+    background-color: var(--color-forest);
+  }
+  .btn:hover { background-color: var(--color-forest-dark); }
+
+  /* Bulleted feature lists with little square markers */
+  .feature-list {
+    @apply space-y-2.5 text-ink-soft;
+  }
+  .feature-list > li {
+    @apply relative pl-6;
+  }
+  .feature-list > li::before {
+    content: "";
+    @apply absolute left-0 top-2.5 h-1.5 w-1.5;
+    background-color: var(--color-line);
+  }
+
+  /* Bold sub-heading inside service blocks */
+  .eyebrow {
+    @apply font-bold text-ink;
+  }
+
+  /* Sticky header — transparent at the top, dark bar after scrolling */
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 transition-colors duration-300;
+  }
+  .site-header.is-scrolled {
+    background-color: rgba(26, 26, 28, 0.92);
+    backdrop-filter: blur(4px);
+  }
+  .site-header.is-scrolled .header-title { color: #f4f1e8; }
+  .site-header.is-scrolled .header-logo  { filter: invert(1) brightness(1.6); }
+}

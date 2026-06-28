@@ -409,13 +409,12 @@
 
       <!-- ===================== OPINIE / GOOGLE REVIEWS ===================== -->
       <!--
-        Sekcja na opinie z Twojego profilu Google.
-        Najszybszy sposób, żeby pokazać prawdziwe opinie Google:
-          1. Wejdź na https://elfsight.com/google-reviews-widget/ (lub podobny widget),
-             połącz swój profil Google Business, skopiuj kod osadzenia (embed).
-          2. Wklej skrypt widgetu tutaj, w miejscu kontenera #google-reviews poniżej,
-             i usuń przykładowe karty.
-        Karty poniżej to przykład wyglądu — podmień je na żywy widget.
+        Karuzela z opiniami. Każda karta i przycisk na dole prowadzą do Twojego
+        profilu Google z opiniami (link CID: https://www.google.com/maps?cid=15673148997484766507).
+
+        Jak dodać/zmienić opinię: skopiuj jeden blok <a class="review-card"> ... </a>
+        i wklej kolejny w środku <div data-track>. Karuzela sama obsłuży dowolną liczbę kart.
+        Treści poniżej to prawdziwe cytaty do podmiany na własne.
       -->
       <section id="opinie" class="wrap py-16 sm:py-20">
         <h2 class="h-section mb-3">Opinie</h2>
@@ -424,32 +423,161 @@
           profilu Google.
         </p>
 
-        <div id="google-reviews" class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Przykładowe karty — podmień na widget z opiniami Google -->
-          <article class="rounded-md bg-card p-6 shadow-sm">
-            <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
-            <p class="text-ink-soft">
-              „Rewelacyjny masaż i niesamowita atmosfera. Twarz wygląda świeżo, a ja czuję się
-              jak nowo narodzona. Polecam z całego serca!”
-            </p>
-            <p class="mt-4 text-sm font-medium text-ink">— Klientka Google</p>
-          </article>
-          <article class="rounded-md bg-card p-6 shadow-sm">
-            <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
-            <p class="text-ink-soft">
-              „Profesjonalizm i ogromna wiedza. Po Kobido napięcie w żuchwie zniknęło,
-              a efekt liftingu widoczny od razu.”
-            </p>
-            <p class="mt-4 text-sm font-medium text-ink">— Klientka Google</p>
-          </article>
-          <article class="rounded-md bg-card p-6 shadow-sm">
-            <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
-            <p class="text-ink-soft">
-              „Najlepszy relaks w Lublinie. Indywidualne podejście i cudowny dotyk.
-              Wrócę na pewno.”
-            </p>
-            <p class="mt-4 text-sm font-medium text-ink">— Klientka Google</p>
-          </article>
+        <div class="reviews" data-carousel>
+          <button class="carousel-arrow carousel-prev" type="button" aria-label="Poprzednia opinia" data-prev>‹</button>
+
+          <!--
+            Prawdziwe opinie z profilu Google. Aby dodać kolejną, skopiuj jeden
+            blok <a class="review-card"> ... </a>. Długie teksty są automatycznie
+            skracane (line-clamp) — całość klient przeczyta po kliknięciu w Google.
+          -->
+          <div class="reviews-track no-scrollbar" data-track>
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#b45f3f">MS</div>
+                <div>
+                  <span class="block font-medium text-ink">Monika Stachniak</span>
+                  <span class="block text-xs text-ink-soft">5 dni temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Bardzo polecam masaż u pani Pauliny. Od samego wejścia można poczuć się komfortowo,
+                bardzo estetyczny i schludny gabinet, a Pani Paulina niezmiernie miła i profesjonalna.
+                Pierwszy raz byłam na masażu kobido, pani Paulina dopytała mnie o wszelakie
+                przeciwskazania, wszystko wyjaśniła oraz zadbała o mój komfort w trakcie masażu.
+                Dopasowała intensywność do moich preferencji. Czuć że wie co robi, bardzo polecam
+                i na pewno wrócę ;)
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#7048a8">AZ</div>
+                <div>
+                  <span class="block font-medium text-ink">Aleksandra Zalewska</span>
+                  <span class="block text-xs text-ink-soft">miesiąc temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Bardzo polecam masaż u Pani Pauliny. Mam porównanie do innego salonu i widzę efekty
+                dopiero tutaj (na drugi dzień czułam „zakwasy" żuchwy). Pani Paulina przeprowadziła
+                wywiad przed zabiegiem i uczciwie powiedziała, że ze względu na wypełniacz, pewną
+                okolicę musi omijać. Sam masaż jest wykonany bardzo dokładnie i z odpowiednim
+                naciskiem. Po zabiegu Pani Paulina powiedziała, co i jak, jakie są sposoby na mój
+                problem i jakie mogą być efekty. Na pewno wrócę!
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#4f7c2f">JJ</div>
+                <div>
+                  <span class="block font-medium text-ink">Julia Janczarek</span>
+                  <span class="block text-xs text-ink-soft">5 miesięcy temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Klimatyczne miejsce, masaż bardzo profesjonalny i przyjemny. Bardzo polecam! ^^
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#3f6f9e">MB</div>
+                <div>
+                  <span class="block font-medium text-ink">M. B.</span>
+                  <span class="block text-xs text-ink-soft">rok temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Bardzo polecam masaż u pani Pauliny. Jest bardzo staranna, dokładna, a jednocześnie
+                profesjonalna i uprzejma. Sam masaż niezwykle przyjemny, relaksujący, momentami można
+                odpłynąć. Bywają momenty dyskomfortu – wiadomo, tam gdzie jesteśmy najbardziej spięci.
+                Efekty wspaniałe – napięta skóra, mniej sine i opuchnięte oczy, naczynka nie wyskakują
+                jak wściekłe mimo tendencji. Serdecznie polecam!
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#9c4f86">NS</div>
+                <div>
+                  <span class="block font-medium text-ink">Natalia Saj</span>
+                  <span class="block text-xs text-ink-soft">2 lata temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Jestem bardzo zadowolona z wizyty u p. Pauliny. Masaż staranny i dogłębny, dzięki
+                czemu mięśnie zostały rozluźnione a ja czuję się zrelaksowana. Dodatkowo dostałam
+                kilka wskazówek, jak dbać o stan skóry przy codziennej pielęgnacji. Jeszcze raz
+                dziękuję i do zobaczenia!
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#c08a2f">KJ</div>
+                <div>
+                  <span class="block font-medium text-ink">Katarzyna Jachymek</span>
+                  <span class="block text-xs text-ink-soft">rok temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Bardzo polecam! Super sposób na relaks, a do tego jeszcze rozluźnia pospinane mięśnie
+                (nie tylko twarzy, ale też szyi czy barków). Najlepszy prezent urodzinowy!
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#b23b3b">AP</div>
+                <div>
+                  <span class="block font-medium text-ink">Agata Patoła</span>
+                  <span class="block text-xs text-ink-soft">rok temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Masaż u Pani Pauliny to niesamowity relaks i czysta przyjemność. Bardzo polecam :)
+              </p>
+            </a>
+
+            <a href="https://www.google.com/maps?cid=15673148997484766507" target="_blank" rel="noopener" class="review-card">
+              <div class="mb-3 flex items-center gap-3">
+                <div class="review-avatar" style="background-color:#2f7d6b">MC</div>
+                <div>
+                  <span class="block font-medium text-ink">Marta Chmielewska</span>
+                  <span class="block text-xs text-ink-soft">2 lata temu</span>
+                </div>
+              </div>
+              <div class="mb-2 text-forest" aria-hidden="true">★★★★★</div>
+              <p class="text-sm text-ink-soft line-clamp-6">
+                Bardzo polecam masaż u Pani Pauliny. Wybrałam masaż kobido w ciemno, bez głębszego
+                rozeznania, i absolutnie nie żałuję. Byłam już dwa razy i na pewno zapiszę się na
+                kolejne wizyty. Efekty napiętej, zdrowszej skóry były widoczne już po pierwszym razie.
+                Cenię sobie profesjonalizm Pani Pauliny; jej dłonie to kompres dla umysłu, a w dodatku
+                ma ciekawą i bardzo miłą osobowość. Serdecznie polecam!
+              </p>
+            </a>
+          </div>
+
+          <button class="carousel-arrow carousel-next" type="button" aria-label="Następna opinia" data-next>›</button>
+        </div>
+
+        <div class="mt-10 text-center">
+          <a
+            href="https://www.google.com/maps?cid=15673148997484766507"
+            target="_blank" rel="noopener"
+            class="btn"
+          >
+            Zobacz wszystkie opinie w Google
+          </a>
         </div>
       </section>
 

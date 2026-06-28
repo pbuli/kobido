@@ -90,6 +90,43 @@
     @apply font-bold text-ink;
   }
 
+  /* ---- Reviews carousel ---- */
+  .reviews {
+    @apply relative;
+  }
+  .reviews-track {
+    @apply flex gap-6 overflow-x-auto scroll-smooth py-1;
+    scroll-snap-type: x mandatory;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+
+  .review-card {
+    @apply block shrink-0 basis-full rounded-md bg-card p-6 shadow-sm transition
+           sm:basis-[calc(50%-0.75rem)] lg:basis-[calc(33.333%-1rem)];
+    scroll-snap-align: start;
+  }
+  .review-card:hover {
+    @apply shadow-md;
+    transform: translateY(-2px);
+  }
+  .review-avatar {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full
+           text-sm font-semibold text-white;
+  }
+
+  .carousel-arrow {
+    @apply absolute top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 items-center
+           justify-center rounded-full bg-white/90 text-2xl leading-none text-ink
+           shadow-md transition hover:bg-white sm:flex;
+  }
+  .carousel-prev { left: -0.5rem; }
+  .carousel-next { right: -0.5rem; }
+  .carousel-arrow:disabled { @apply cursor-default opacity-30; }
+
   /* Sticky header — transparent at the top, dark bar after scrolling */
   .site-header {
     @apply fixed inset-x-0 top-0 z-50 transition-colors duration-300;

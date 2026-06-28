@@ -8,11 +8,13 @@
     "dev": "vite",
     "local": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vite build && wrangler deploy"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "tailwindcss": "^4.1.11",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "wrangler": "^4.40.0"
   }
 }

@@ -1,0 +1,12 @@
+{
+  // Statyczny deploy na Cloudflare Workers (Static Assets).
+  // Dzięki temu plikowi `wrangler deploy` NIE robi auto-konfiguracji
+  // (nie dokłada @cloudflare/vite-plugin) — tylko wysyła zawartość ./dist.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "kobido",
+  "compatibility_date": "2026-06-28",
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "single-page-application"
+  }
+}

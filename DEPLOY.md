@@ -21,13 +21,14 @@ Cloudflare Dashboard → **Workers & Pages** → **Create** → zakładka **Page
 
 ## 3. Ustawienia builda
 
+Projekt działa jako **Worker ze statycznymi plikami** (Static Assets).
+W repo jest plik **`wrangler.jsonc`**, który mówi Wranglerowi, żeby tylko wysłał
+zawartość `dist/` (bez auto-konfiguracji i bez ponownego builda).
+
 | Pole | Wartość |
 |------|---------|
-| Framework preset | **None** (lub „Vite") |
 | **Build command** | `pnpm run build` |
-| **Build output directory** | `dist` |
-| **Deploy command** | *(zostaw puste)* |
-| Production branch | `main` |
+| **Deploy command** | `npx wrangler deploy` |
 
 ### Dwie komendy, o które pyta Cloudflare
 
@@ -35,20 +36,22 @@ Cloudflare Dashboard → **Workers & Pages** → **Create** → zakładka **Page
   ```
   pnpm run build
   ```
-  (Cloudflare sam uruchomi `pnpm install` przed buildem, bo widzi `pnpm-lock.yaml`.
-  Jeśli kiedyś instalacja zostanie pominięta, użyj: `pnpm install && pnpm run build`.)
+  (Cloudflare sam uruchomi `pnpm install` przed buildem, bo widzi `pnpm-lock.yaml`.)
 
 - **Deploy command:**
-  Przy integracji z Git **nie jest potrzebna** — zostaw to pole puste.
-  Cloudflare automatycznie publikuje zawartość katalogu `dist/` po każdym
-  buildzie (czyli po każdym `git push`).
+  ```
+  npx wrangler deploy
+  ```
+  Dzięki plikowi `wrangler.jsonc` Wrangler wyśle gotowe pliki z `dist/`.
 
-  Jeśli interfejs wymusza wpisanie czegoś (nowy tryb „Workers Builds"),
-  wpisz:
-  ```
-  npx wrangler pages deploy dist --project-name=kobido-lublin
-  ```
-  (`kobido-lublin` zamień na nazwę projektu nadaną w Cloudflare.)
+### Dlaczego poprzednie próby nie działały
+
+- `npx wrangler pages deploy dist ...` → **Authentication error [code: 10000]** —
+  token CI ma uprawnienia do Workers, ale nie do *Pages*. (Ten projekt to Worker,
+  więc i tak nie używamy `pages deploy`.)
+- gołe `npx wrangler deploy` bez `wrangler.jsonc` → Wrangler robił auto-konfigurację,
+  dokładał `@cloudflare/vite-plugin` i build wywalał się na `registerHooks`
+  (niezgodność wersji Node). Plik `wrangler.jsonc` to wyłącza.
 
 ## 4. Wersja Node
 
